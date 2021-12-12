@@ -82,6 +82,7 @@ for b in buses:
     else:
         remainders.append(delta)
 
+# fast solution
 match = chinese_remainder(nums, remainders)
 print('match',match)
 matches = [match+(v-max_pos) for v in buses.values()]

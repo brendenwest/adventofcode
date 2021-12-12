@@ -1,10 +1,7 @@
-lines = open("input.txt", "r").readlines()
-#lines = open("sample.txt", "r").readlines()
-#lines = open("sample2.txt", "r").readlines()
+lines = [n.strip('\n').split() for n in open("input.txt", "r").readlines()]
 
 # prepare data
 for i, line in enumerate(lines):
-    line = line.replace('\n','').split()
     line[1] = int(line[1])
     line.append(False)
     lines[i] = line
@@ -34,14 +31,15 @@ def part_two():
     valid = True
     current = 0
     count = 0
-    last_jump = 0
+    has_jumped = False
     while valid:
         count += 1
-#        print(count, 'cur', current)
-#        print(lines)
-        print()
-
+        if lines[current][2]:
+            print()
+            print(current, lines[current])
+            break
         lines[current][2] = count
+        print()
         print(current, lines[current])
         if lines[current][0] == 'acc':
             acc += lines[current][1]
@@ -49,14 +47,16 @@ def part_two():
         elif lines[current][0] == 'nop':
             current += 1
         else:   # jump
-            if last_jump:
+            if has_no_opped and has_jumped and not_flip:
+
+            elif lines[current][1] < 0:
                 lines[current][0] = 'nop'
                 current += 1
+                has_no_opped = True
             else:
                 print('jump')
-                last_jump = lines[current][1]
+                has_jumped = True
                 current += lines[current][1]
-
 
         if current == len(lines):
             break
@@ -65,4 +65,7 @@ def part_two():
 
 #part_one()
 part_two()
+'''
+wrong - 624, 2668
+'''
 #print(lines)
