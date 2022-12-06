@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../utils')
+from utils import input
+
 # part 1
 def get_priority(letter):
     letters = " abcdefghijklmnopqrstuvwxyz"
@@ -7,7 +11,7 @@ def get_priority(letter):
     return priority
 
 sum = 0
-for line in open("input.txt", "r").readlines():
+for line in input():
     mid = len(line)//2
     a = set(line[0:mid])
     b = set(line[mid:])
@@ -20,13 +24,12 @@ print("part 1", sum)
 count = 0
 group = []
 sum = 0
-for line in open("input.txt", "r").readlines():
+for line in input():
     group.append(line.strip())
     count += 1
     if count == 3:
         sets = [set(part) for part in group]
         badge = sets[0].intersection(sets[1]).intersection(sets[2])
-        print(badge)
         for x in badge:
             sum += get_priority(x)
         count = 0

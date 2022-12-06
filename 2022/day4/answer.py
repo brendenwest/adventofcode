@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../utils')
+from utils import input
 
 # sample data
 lines = [
@@ -9,14 +12,9 @@ lines = [
 "2-6,4-8"
 ]
 
-def data(is_test=False):
-    if is_test:
-        return lines
-    return open("input.txt", "r").readlines()
-
 # part 1
 count = 0
-for line in data():
+for line in input():
     parts = line.strip().split(",")
     pairs = [part.split("-") for part in parts]
     if int(pairs[0][0]) <= int(pairs[1][0]) and int(pairs[0][1]) >= int(pairs[1][1]):
@@ -28,7 +26,7 @@ print("part 1 =", count)
 
 # part 1
 count = 0
-for line in data():
+for line in input():
     parts = line.strip().split(",")
     pairs = [range(int(section[0]),int(section[1])+1) for section in [part.split("-") for part in parts]]
     if pairs[0].start in pairs[1] or pairs[0].stop-1 in pairs[1]:

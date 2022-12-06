@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../utils')
+from utils import input
+
 '''
 A for Rock, B for Paper, and C for Scissors
 X for Rock, Y for Paper, and Z for Scissors
@@ -20,7 +24,7 @@ value = {"X": 1, "Y": 2, "Z": 3 }
 
 # part 1
 sum = 0
-for line in open("input.txt", "r").readlines():
+for line in input():
     choices = line.strip().split(" ")
     sum += value[choices[1]] + scenarios[choices[1]][choices[0]]
 
@@ -41,7 +45,7 @@ goals = {"X": 0, "Y": 3, "Z": 6 }
 value = {"A": 1, "B": 2, "C": 3 }
 
 sum = 0
-for line in open("input.txt", "r").readlines():
+for line in input():
     choices = line.strip().split(" ")
     goal = goals[choices[1]]
     choice = scenarios[choices[0]][goal]

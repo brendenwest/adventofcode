@@ -1,9 +1,12 @@
+import sys
+sys.path.append('../utils')
+from utils import input
 
 # part 1
 max = (0, 0)
 count = 0
 sum = 0
-for line in open("input.txt", "r").readlines():
+for line in input():
     if len(line) > 1:
         sum += int(line)
     else:
@@ -19,7 +22,7 @@ import heapq, functools
 h = []
 count = 0
 sum = 0
-for line in open("input.txt", "r").readlines():
+for line in input():
     if len(line) > 1:
         sum += int(line)
     else:
