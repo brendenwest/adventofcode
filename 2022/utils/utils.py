@@ -1,4 +1,8 @@
 def input(data=None):
-    if data:
+    if data and type(data) is list:
         return data
-    return open("input.txt", "r").readlines()
+    elif data:
+        file = data + ".txt"
+    else:
+        file = "input.txt"
+    return open(file, "r").readlines()
